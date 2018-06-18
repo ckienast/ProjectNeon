@@ -79,7 +79,7 @@ const CoCStack = createStackNavigator({
 })
 
 CoCStack.navigationOptions = {
-  tabBarLabel: 'Codex',
+  tabBarLabel: 'Information',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
