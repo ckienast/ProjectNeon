@@ -24,16 +24,20 @@ export default class Tweet extends React.Component {
     const noMatch = text.split(pattern)
     const match = text.match(pattern)
 
-    let newString = []
+    if (match) {
+      let newString = []
 
-    for (let i = 0; i < noMatch.length; i++) {
-      newString.push(
-        <Text key={`noMatch_${i}`}>{noMatch[i]}</Text>,
-        <Text style={{ color: Colors.accentBlue }} key={`match_${i}`}>{match[i]}</Text>
-      )
+      for (let i = 0; i < noMatch.length; i++) {
+        newString.push(
+          <Text key={`noMatch_${i}`}>{noMatch[i]}</Text>,
+          <Text style={{ color: Colors.accentBlue }} key={`match_${i}`}>{match[i]}</Text>
+        )
+      }
+
+      return newString
     }
 
-    return newString
+    return text
   }
 
   render() {
@@ -118,7 +122,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white
   },
   image: {
-    height: 200,
+    height: 300,
     width: 375
   },
   tweetHeader: {
@@ -150,14 +154,15 @@ const styles = StyleSheet.create({
   },
   verifiedIcon: {
     color: Colors.twitterBlue,
-    fontSize: 16,
-    marginLeft: 5
+    fontSize: 14,
+    marginLeft: 5,
+    marginBottom: 3,
   },
   twitterIcon: {
     color: Colors.twitterBlue,
     fontSize: 20,
     marginRight: -10,
-    marginBottom: 1.5
+    marginBottom: 3
   },
   text: {
     fontFamily: 'BloggerSans',
