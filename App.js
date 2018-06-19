@@ -35,6 +35,8 @@ export default class App extends React.Component {
     return Promise.all([
       Font.loadAsync({
         BloggerSans: require('./assets/fonts/BloggerSans.ttf'),
+        BloggerSansItalic: require('./assets/fonts/BloggerSansItalic.ttf'),
+        BloggerSansBold: require('./assets/fonts/BloggerSansBold.ttf'),
         Roboto: require("native-base/Fonts/Roboto.ttf"),
         Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf")
       }),
