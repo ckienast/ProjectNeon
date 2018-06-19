@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet } from 'react-native'
+import { Platform, StatusBar, StyleSheet } from 'react-native'
 
 import { Container, Header, Body, Title } from 'native-base';
 
@@ -32,6 +32,11 @@ export default class EmptyScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.veryDarkBlue,
+    ...Platform.select({
+      android: {
+        paddingTop: StatusBar.currentHeight
+      }
+    })
   },
   header: {
     backgroundColor: Colors.darkBlue,
@@ -41,6 +46,10 @@ const styles = StyleSheet.create({
     color: Colors.title,
     fontFamily: 'BloggerSans',
     fontSize: 30,
-    marginTop: 12
+    ...Platform.select({
+      ios: {
+        marginTop: 12
+      }
+    })
   }
 })

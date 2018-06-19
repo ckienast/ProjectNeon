@@ -1,16 +1,13 @@
 import React from 'react'
-import { StyleSheet } from 'react-native'
+import { Platform, StatusBar, StyleSheet } from 'react-native'
 
 import {
   Body,
   Container,
   Content,
   Header,
-  Left,
   List,
-  Text,
-  Title,
-  Thumbnail
+  Title
 } from 'native-base'
 
 import Colors from '../constants/Colors'
@@ -33,8 +30,8 @@ export default class SpeakerIndex extends React.Component {
           <Body>
             <Title style={styles.title}>
               RuhrJS
-              </Title>
-          </Body>>
+            </Title>
+          </Body>
         </Header>
         <Content>
           <List>
@@ -61,6 +58,11 @@ export default class SpeakerIndex extends React.Component {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.veryDarkBlue,
+    ...Platform.select({
+      android: {
+        paddingTop: StatusBar.currentHeight
+      }
+    })
   },
   header: {
     backgroundColor: Colors.darkBlue,
@@ -70,6 +72,10 @@ const styles = StyleSheet.create({
     color: Colors.title,
     fontFamily: 'BloggerSans',
     fontSize: 30,
-    marginTop: 12
+    ...Platform.select({
+      ios: {
+        marginTop: 12
+      }
+    })
   }
 })

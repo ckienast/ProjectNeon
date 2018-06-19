@@ -35,21 +35,36 @@ export default class HomeScreen extends React.Component {
           androidStatusBarColor={Colors.darkBlue}
           iosBarStyle='light-content'
         >
-          <Left>
-            <Button transparent>
-              <Icon
-                style={styles.hashIcon}
-                type='Feather'
-                name='hash'
-              />
-            </Button>
-          </Left>
+          {
+            Platform.os === 'ios' ?
+              <Left>
+                <Button transparent>
+                  <Icon
+                    style={styles.hashIcon}
+                    type='Feather'
+                    name='hash'
+                  />
+                </Button>
+              </Left>
+              : null
+          }
           <Body>
             <Title style={styles.title}>
               RuhrJS
-              </Title>
+            </Title>
           </Body>
           <Right>
+            {
+              Platform.OS === 'android' ?
+                <Button transparent>
+                  <Icon
+                    style={styles.hashIcon}
+                    type='Feather'
+                    name='hash'
+                  />
+                </Button>
+                : null
+            }
             <Button transparent>
               <Icon
                 style={styles.atSignIcon}
@@ -59,7 +74,7 @@ export default class HomeScreen extends React.Component {
             </Button>
           </Right>
         </Header>
-        <ScrollView style={styles.container}>
+        <ScrollView style={styles.scrollView}>
           {
             Tweets.map((tweet, index) => (
               <Tweet tweet={tweet} lastTweet={index === Tweets.length - 1} key={`tweet_${index}`} />
@@ -80,6 +95,9 @@ const styles = StyleSheet.create({
       }
     })
   },
+  scrollView: {
+    backgroundColor: Colors.veryDarkBlue
+  },
   header: {
     backgroundColor: Colors.darkBlue,
     borderBottomColor: 'transparent'
@@ -92,7 +110,11 @@ const styles = StyleSheet.create({
     color: Colors.title,
     fontFamily: 'BloggerSans',
     fontSize: 30,
-    marginTop: 12
+    ...Platform.select({
+      ios: {
+        marginTop: 12
+      }
+    })
   },
   atSignIcon: {
     color: Colors.white
