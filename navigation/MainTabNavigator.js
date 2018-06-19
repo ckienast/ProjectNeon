@@ -4,6 +4,7 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon'
 import HomeScreen from '../screens/HomeScreen'
+import ScheduleScreen from '../screens/ScheduleScreen'
 import SpeakerIndex from '../screens/SpeakerIndex'
 import EmptyScreen from '../screens/EmptyScreen'
 
@@ -29,7 +30,7 @@ SpeakerStack.navigationOptions = {
 }
 
 const ScheduleStack = createStackNavigator({
-  Schedule: EmptyScreen,
+  Schedule: ScheduleScreen,
 })
 
 ScheduleStack.navigationOptions = {
@@ -74,11 +75,11 @@ LocationStack.navigationOptions = {
   ),
 }
 
-const CoCStack = createStackNavigator({
+const InformationStack = createStackNavigator({
   Settings: EmptyScreen,
 })
 
-CoCStack.navigationOptions = {
+InformationStack.navigationOptions = {
   tabBarLabel: 'Information',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
@@ -94,16 +95,16 @@ export default createBottomTabNavigator(
     ScheduleStack,
     HomeStack,
     LocationStack,
-    CoCStack
+    InformationStack
   }, {
-    initialRouteName: 'SpeakerStack',
+    initialRouteName: 'ScheduleStack',
     tabBarOptions: {
       activeTintColor: Colors.tabIconSelected,
       inactiveTintColor: Colors.tabIconDefault,
       style: {
-        height: 55,
+        height: 65,
         backgroundColor: Colors.darkBlue,
-        paddingTop: 5
+        paddingBottom: 5
       },
       labelStyle: {
         fontFamily: 'BloggerSans',
