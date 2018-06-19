@@ -1,5 +1,10 @@
 import React from 'react'
-import { Platform, StatusBar, StyleSheet } from 'react-native'
+import {
+  Image,
+  Platform,
+  StatusBar,
+  StyleSheet
+} from 'react-native'
 
 import {
   Body,
@@ -29,7 +34,7 @@ export default class SpeakerIndex extends React.Component {
         >
           <Body>
             <Title style={styles.title}>
-              RuhrJS
+              <Image style={styles.titleImage} resizeMode='contain' source={require('../assets/images/ruhrjs.png')} />
             </Title>
           </Body>
         </Header>
@@ -65,16 +70,29 @@ const styles = StyleSheet.create({
     })
   },
   header: {
+    height: 75,
     backgroundColor: Colors.darkBlue,
     borderBottomColor: 'transparent'
   },
   title: {
-    color: Colors.title,
-    fontFamily: 'BloggerSans',
-    fontSize: 30,
     ...Platform.select({
       ios: {
         marginTop: 12
+      },
+      android: {
+        marginLeft: 5
+      }
+    })
+  },
+  titleImage: {
+    ...Platform.select({
+      ios: {
+        width: 170,
+        height: 35
+      },
+      android: {
+        width: 500,
+        height: 100
       }
     })
   }

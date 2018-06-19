@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {
+  Image,
   Platform,
   ScrollView,
   StatusBar,
@@ -36,43 +37,39 @@ export default class HomeScreen extends React.Component {
           iosBarStyle='light-content'
         >
           {
-            Platform.os === 'ios' ?
-              <Left>
-                <Button transparent>
-                  <Icon
-                    style={styles.hashIcon}
-                    type='Feather'
-                    name='hash'
-                  />
-                </Button>
-              </Left>
+            Platform.OS === 'ios' ?
+              <Button transparent>
+                <Icon
+                  style={styles.hashIcon}
+                  type='Feather'
+                  name='hash'
+                />
+              </Button>
               : null
           }
           <Body>
             <Title style={styles.title}>
-              RuhrJS
+              <Image style={styles.titleImage} resizeMode='contain' source={require('../assets/images/ruhrjs.png')} />
             </Title>
           </Body>
-          <Right>
-            {
-              Platform.OS === 'android' ?
-                <Button transparent>
-                  <Icon
-                    style={styles.hashIcon}
-                    type='Feather'
-                    name='hash'
-                  />
-                </Button>
-                : null
-            }
-            <Button transparent>
-              <Icon
-                style={styles.atSignIcon}
-                type='Feather'
-                name='at-sign'
-              />
-            </Button>
-          </Right>
+          {
+            Platform.OS === 'android' ?
+              <Button transparent>
+                <Icon
+                  style={styles.hashIcon}
+                  type='Feather'
+                  name='hash'
+                />
+              </Button>
+              : null
+          }
+          <Button transparent>
+            <Icon
+              style={styles.atSignIcon}
+              type='Feather'
+              name='at-sign'
+            />
+          </Button>
         </Header>
         <ScrollView style={styles.scrollView}>
           {
@@ -99,6 +96,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.veryDarkBlue
   },
   header: {
+    height: 75,
     backgroundColor: Colors.darkBlue,
     borderBottomColor: 'transparent'
   },
@@ -107,12 +105,24 @@ const styles = StyleSheet.create({
     fontSize: 24
   },
   title: {
-    color: Colors.title,
-    fontFamily: 'BloggerSans',
-    fontSize: 30,
     ...Platform.select({
       ios: {
         marginTop: 12
+      },
+      android: {
+        marginLeft: 5
+      }
+    })
+  },
+  titleImage: {
+    ...Platform.select({
+      ios: {
+        width: 170,
+        height: 35
+      },
+      android: {
+        width: 500,
+        height: 100
       }
     })
   },

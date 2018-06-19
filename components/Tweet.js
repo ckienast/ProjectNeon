@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white
   },
   image: {
-    height: 300,
+    height: 250,
     width: 375
   },
   tweetHeader: {
