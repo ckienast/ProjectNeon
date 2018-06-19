@@ -96,7 +96,14 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.veryDarkBlue
   },
   header: {
-    height: 75,
+    ...Platform.select({
+      android: {
+        height: 65,
+      },
+      ios: {
+        height: 75,
+      }
+    }),
     backgroundColor: Colors.darkBlue,
     borderBottomColor: 'transparent'
   },
@@ -107,6 +114,7 @@ const styles = StyleSheet.create({
   title: {
     ...Platform.select({
       ios: {
+        marginLeft: 10,
         marginTop: 12
       },
       android: {

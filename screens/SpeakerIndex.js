@@ -70,13 +70,21 @@ const styles = StyleSheet.create({
     })
   },
   header: {
-    height: 75,
+    ...Platform.select({
+      android: {
+        height: 65,
+      },
+      ios: {
+        height: 75,
+      }
+    }),
     backgroundColor: Colors.darkBlue,
     borderBottomColor: 'transparent'
   },
   title: {
     ...Platform.select({
       ios: {
+        marginLeft: 10,
         marginTop: 12
       },
       android: {
